@@ -34,6 +34,8 @@ public class ShipMovement : MonoBehaviour
     private float strafe1D;
     private float roll1D;
     private Vector2 pitchYaw;
+
+    [SerializeField] private bool isOccupied = false;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -41,7 +43,11 @@ public class ShipMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        HandleMovement();
+        if (isOccupied) 
+        {
+          HandleMovement();
+        }
+
     }
 
     void HandleMovement()
